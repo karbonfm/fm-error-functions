@@ -1,0 +1,39 @@
+/**
+ *
+ * wraps the error in a JSON Object
+ *
+ * @param {number} errorCode the FileMaker Error Code.
+ * @param {string} descriptor describe where the error is happening
+ * @param {object} [data] optional extra data you want to record
+ * 
+ * @return {object} an error object
+ *
+ * @module fm-error-functions
+ * @see https://github.com/karbonfm/fm-error-functions
+ *
+ * @history 2017-10-01, todd@geistinteractive.com, created
+ *
+ */
+
+Let ( 
+[
+e = errorCode;
+e = If( IsEmpty ( e ) ; 0 ; GetAsNumber(e) );
+
+base = JSONSetElement ( "" ; "errorCode" ; e ; JSONNumber ) ;
+
+basePlusMessage = If ( e >= -1 ; JSONSetElement ( base ; "errorMessage"; Error.Description(e) ; JSONString) ; base )
+] ;
+
+Case(
+   not e ; base ;
+   JSONSetElement( basePlusMessage ; 
+		["scriptName" ; Get(ScriptName) ; JSONString];
+		["type" ; "FM" ; JSONString] ;
+		["descriptor" ; descriptor ; JSONString] ;
+		["data" ; data ; JSONObject] 
+    )
+
+)
+
+)

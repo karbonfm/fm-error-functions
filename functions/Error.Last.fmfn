@@ -1,0 +1,16 @@
+/**
+ * wraps the Last FileMaker error in a JSON Object
+ *
+ * @param {string} descriptor describe where the error is happening
+ * @param {object} [data] optional extra data you want to record
+ *
+ * @returns {object} error object
+ *
+ * @module fm-error-functions
+ * @see https://github.com/karbonfm/fm-error-functions
+ *
+ * @history 2015-10-01, todd@geistinteractive.com, created
+ *
+ */
+
+Error ( Get (LastError); descriptor; data)

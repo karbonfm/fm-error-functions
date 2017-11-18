@@ -1,0 +1,33 @@
+/**
+ * tests the object for an errorCode.
+ * if the errorCode is NOT "" or 0 it returns true
+ *
+ * @param {object} theError
+ *
+ * @return {boolean}
+ *
+ * @module fm-error-functions
+ * @see https://github.com/karbonfm/fm-error-functions
+ *
+ * @history 2015-10-01, todd@geistinteractive.com, created
+ *
+ */
+
+Let(
+[
+
+errorIsEmpty = IsEmpty( thisError );
+
+errorCode =   GetAsBoolean( JSONGetElement ( thisError ; "errorCode" ) );
+error =  GetAsBoolean( JSONGetElement ( thisError ; "error" ) )
+
+];
+
+Case(
+   errorIsEmpty ; 0;
+   error ; 1;
+   errorCode ; 1;
+   0
+)
+
+)

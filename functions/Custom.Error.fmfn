@@ -1,0 +1,13 @@
+/*
+This is an example of a custom error created for some other module
+notice we use -2 for the errorCode.
+
+*/
+
+
+
+JSONSetElement(	Error ( -2 ; descriptor ; data  );
+
+    ["message" ; "Custom Error" ; JSONString]
+
+)
